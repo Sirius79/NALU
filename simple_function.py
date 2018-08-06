@@ -31,13 +31,12 @@ def train(model, optimizer, data, target, num_iters):
   for i in range(num_iters):
     out = model(data)
     loss = F.mse_loss(out, target)
-    mea = torch.mean(torch.abs(target - out))
     all_losses.append(loss)
     optimizer.zero_grad()
     loss.backward()
     optimizer.step()
     if i % 1000 == 0:
-      print("\t{}/{}: loss: {:.7f} - mea: {:.7f}".format(i+1, num_iters, loss.item(), mea.item()))
+      print("\t{}/{}: loss: {:.7f} ".format(i+1, num_iters, loss.item()))
   return all_losses
 
 def test(model, data, target):
@@ -63,10 +62,10 @@ def main():
   plt.plot(all_losses)
   
   # test
-  results = test(net, X_t, y_t)
+  results = test(model, X_test, y_test)
   
   # check
-  print(X_test[1], y_test[1], mse[1])
+  print(X_test[1], y_test[1], results[1])
 
 if __name__ == '__main__':
     main()
