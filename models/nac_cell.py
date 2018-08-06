@@ -7,16 +7,16 @@ import torch.nn.functional as F
 import numpy as np
 import math
 
-class NAC(nn.Module):
+class NACCell(nn.Module):
   '''
-    Neural Architecture Cell
+    Neural Accumulator Cell
   '''
   def __init__(self, input_size, output_size):
     '''
       input_size: input dimension
       output_size: output dimension
     '''
-    super(NeuralArchitectureCell, self).__init__()
+    super(NACCell, self).__init__()
     self.input = input_size
     self.output = output_size
     
