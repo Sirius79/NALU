@@ -56,7 +56,7 @@ def main():
   model = NALU(2,2,1,2)
   optim = torch.optim.RMSprop(model.parameters(), lr = 1e-3)
   # train
-  all_losses = train(net, optim, X_train, y_train, 100000)
+  all_losses = train(model, optim, X_train, y_train, 100000)
   
   # plot losses
   plt.figure()
