@@ -6,7 +6,7 @@ import torch.nn.init as init
 import torch.nn.functional as F
 import numpy as np
 import math
-from nac import NAC
+from nac_cell import NACCell
 
 class NeuralALUCell(nn.Module):
   '''
@@ -26,7 +26,7 @@ class NeuralALUCell(nn.Module):
     self.G = Parameter(torch.Tensor(self.output, self.input, device=device))
     self.W = Parameter(torch.Tensor(self.output, self.input, device=device))
     self.register_parameter('bias', None)
-    self.nac = NAC(self.input, self.output)
+    self.nac = NACCell(self.input, self.output)
     
     init.xavier_uniform_(self.G)
     init.xavier_uniform_(self.W)
