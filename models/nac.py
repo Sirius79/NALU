@@ -26,7 +26,7 @@ class NAC(nn.Module):
     self.output = output_size
     self.num_layers = num_layers
     
-    layers = [NACCell(self.hidden if i>0 else self.input, self.hidden if i<num_layers-1 else self.output) for i in num_layers]
+    layers = [NACCell(self.hidden if i>0 else self.input, self.hidden if i<num_layers-1 else self.output) for i in range(num_layers)]
     self.model = nn.Sequential(*layers)
   
   def forward(self, input):
