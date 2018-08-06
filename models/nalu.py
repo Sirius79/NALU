@@ -27,7 +27,7 @@ class NALU(nn.Module):
     self.num_layers = num_layers
     self.epsilon = epsilon
     
-    layers = [NeuralALUCell(self.hidden if i>0 else self.input, self.hidden if i<num_layers-1 else self.output, self.epsilon) for i in num_layers]
+    layers = [NeuralALUCell(self.hidden if i>0 else self.input, self.hidden if i<num_layers-1 else self.output, self.epsilon) for i in range(num_layers)]
     self.model = nn.Sequential(*layers)
   
   def forward(self, input):
