@@ -22,7 +22,7 @@ class NACCell(nn.Module):
     
     self.W_h = Parameter(torch.Tensor(self.output, self.input, device=device))
     self.M_h = Parameter(torch.Tensor(self.output, self.input, device=device))
-    self.W = Parameter(F.tanh(self.W_h) * F.sigmoid(self.M_h))
+    self.W = Parameter(torch.tanh(self.W_h) * torch.sigmoid(self.M_h))
     self.register_parameter('bias', None)
     
     init.xavier_uniform_(self.W_h)
